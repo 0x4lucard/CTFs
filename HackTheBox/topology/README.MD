@@ -1,4 +1,5 @@
-<img align="center" height="250" alt="coding-time" src="./img/congrats.png">
+
+<img align="center" height="500" alt="coding-time" src="./img/congrats.png">
 </br>
 
 # 16/09/2023
