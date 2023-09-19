@@ -1,11 +1,6 @@
-<div  align="center"> 
-  <div style="display: inline_block"><br>
-    <img align="center" height="250" alt="coding-time" src="./img/congrats.png">
-      </div>
-    
-</br>
 
-# Topology
+![topology.png](./img/congrats.png)
+
 ### 16/09/2023
 
 # Recon
