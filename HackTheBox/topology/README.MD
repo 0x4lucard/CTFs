@@ -43,11 +43,10 @@ Nmap done: 1 IP address (1 host up) scanned in 21.79 seconds
 From the NMAP scan, ports 80 and 22 were discoverable. So I proceeded to go to the website.
 
 <img src="./img/site.png">
+
 By visiting the site we can see that the domain is topology.htb. 
 
-
 # Enumeration
-
 
 ```python
 ffuf -H "Host: FUZZ.topology.htb" -u "http://topology.htb/" -w /usr/share/wordlists/SecLists/Discovery/Web-Content/directory-list-2.3-medium.txt --fs 6767 
@@ -83,6 +82,7 @@ ________________________________________________
     * FUZZ: dev
 
 ```
+
 Found two more subdomains dev , stats 
 
 <img src="./img/dev.png">
@@ -90,10 +90,13 @@ Found two more subdomains dev , stats
 <br>
 
 I roamed the website to find the link LaTex Equation Generator helpful.
+
 <img src="./img/latex.png">
 
 <br>
+
 Following this, I search an exploit to work on this function. However, it did not give me any credentials so I had to use the subdomain dev.topology.htb. There is a htpasswd which would give the password of the user. To exploit this the command is shown below.
+
 <img src="./img/hacktricks.png">
 <br>
 
@@ -116,11 +119,13 @@ $apr1$1ONUB/S2$58eeNVirnRDB5zAIbIxTY0:calculus20
 ```     
                                                      
 <br>
+
 When decrypted, the password is calculus20
-After cracking that hash you can log in as vdaisley using ssh 
+After cracking that hash you can log in as vdaisley using ssh.
+
 <br>
 <img src="./img/ssh.png">
-To get the user flag just navigate directories and cat out the user.txt
+To get the user flag just navigate directories and cat out the user.txt.
 <br>
 
 # Priv-Esc
@@ -131,6 +136,7 @@ Priv esc is pretty interesting!
 
 To obtain root status we must find exploit pspy86. Gnuplot uses plt files.
 From uploading the file using wget, I managed to make it executable and so I was able to run it.
+
 <br>
 
 <img src="./img/pspy.png">
