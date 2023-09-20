@@ -1,5 +1,5 @@
 
-<img align="center" height="800" alt="coding-time" src="./img/congrats.png">
+<img src="./img/topology-htb.jpeg">
 </br>
 
 # Topology
@@ -7,6 +7,7 @@
 # Recon
 Default nmap Scan open ports:
 <br>
+
 ```python 
 nmap -Pn -sV -O 10.10.11.217
 ```
@@ -41,7 +42,7 @@ Nmap done: 1 IP address (1 host up) scanned in 21.79 seconds
 ```
 From the NMAP scan, ports 80 and 22 were discoverable. So I proceeded to go to the website.
 
-<img src="/img/site.png">
+<img src="./img/site.png">
 By visiting the site we can see that the domain is topology.htb. 
 
 
