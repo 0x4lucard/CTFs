@@ -111,6 +111,7 @@ To decrypt it, I used the hashcat tool.
 hashcat -m 1600 -a 0 hash.txt /usr/share/wordlists/rockyou.txt 
 ```
 <br>
+
 ```python 
 $apr1$1ONUB/S2$58eeNVirnRDB5zAIbIxTY0:calculus20          
 ```     
