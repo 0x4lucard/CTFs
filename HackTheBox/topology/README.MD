@@ -1,17 +1,15 @@
 # Topology
 
 <img src="./img/topology-htb.jpeg">
-</br>
-
 
 # Recon
 Default nmap Scan open ports:
-<br>
+
 
 ```python 
 nmap -Pn -sV -O 10.10.11.217
 ```
-<br>
+
 
 ```python
 Starting Nmap 7.94 ( https://nmap.org ) at 2023-09-17 00:44 EDT
@@ -95,7 +93,7 @@ I roamed the website to find the link LaTex Equation Generator helpful.
 Following this, I search an exploit to work on this function. However, it did not give me any credentials so I had to use the subdomain dev.topology.htb. There is a htpasswd which would give the password of the user. To exploit this the command is shown below.
 
 <img src="./img/hacktricks.png">
-<br>
+
 
 ```
 $\lstinputlisting{/var/www/dev/.htpasswd}$
@@ -110,21 +108,20 @@ To decrypt it, I used the hashcat tool.
 ```python
 hashcat -m 1600 -a 0 hash.txt /usr/share/wordlists/rockyou.txt 
 ```
-<br>
+
 
 ```python 
 $apr1$1ONUB/S2$58eeNVirnRDB5zAIbIxTY0:calculus20          
 ```     
-                                                     
-<br>
+
 
 When decrypted, the password is calculus20
 After cracking that hash you can log in as vdaisley using ssh.
 
-<br>
+
 <img src="./img/ssh.png">
 To get the user flag just navigate directories and cat out the user.txt.
-<br>
+
 
 # Priv-Esc
 
@@ -135,7 +132,7 @@ From uploading the file using wget, I managed to make it executable and so I was
 <br>
 
 <img src="./img/pspy.png">
-<br>
+
 The following command made a plt file inside a directory and with the statement system chmod u+s. Bash -p ran the command and made me root. 
 
 
