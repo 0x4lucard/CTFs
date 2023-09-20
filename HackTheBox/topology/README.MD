@@ -40,6 +40,7 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
 Nmap done: 1 IP address (1 host up) scanned in 21.79 seconds
 ```
+
 From the NMAP scan, ports 80 and 22 were discoverable. So I proceeded to go to the website.
 
 <img src="./img/site.png">
@@ -87,13 +88,9 @@ Found two more subdomains dev , stats
 
 <img src="./img/dev.png">
 
-<br>
-
 I roamed the website to find the link LaTex Equation Generator helpful.
 
 <img src="./img/latex.png">
-
-<br>
 
 Following this, I search an exploit to work on this function. However, it did not give me any credentials so I had to use the subdomain dev.topology.htb. There is a htpasswd which would give the password of the user. To exploit this the command is shown below.
 
@@ -129,23 +126,21 @@ To get the user flag just navigate directories and cat out the user.txt.
 <br>
 
 # Priv-Esc
-<br>
+
 Priv esc is pretty interesting!
-
-<br>
-
 To obtain root status we must find exploit pspy86. Gnuplot uses plt files.
 From uploading the file using wget, I managed to make it executable and so I was able to run it.
 
 <br>
 
 <img src="./img/pspy.png">
-
+<br>
 The following command made a plt file inside a directory and with the statement system chmod u+s. Bash -p ran the command and made me root. 
 
-<br>
+
 
 <img src="./img/priv.png">
+
 From there I was able to switch directories and was able to cat out the root.txt
 
 
