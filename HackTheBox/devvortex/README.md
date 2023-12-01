@@ -190,7 +190,7 @@ Let's try it out.
 ```python
 ruby exploit.rb http://dev.devvortex.htb 
 ```
-<img src="./img/8.png>
+<img src="./img/8.png">
 
 Nice. We have the database login credentials.  
 Then I tried to connect SSH with the credentials provided, but we didn't get access, but we were able to access the Joomla page.
