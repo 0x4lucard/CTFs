@@ -249,7 +249,8 @@ To get the pager, we need to "load and view" the crash report using this apport-
 We need to perform a segmentation fault, and to do this we use the following command:
 
 ```python
-sleep 13 & kill - SIGSEGV $!```
+sleep 13 & kill - SIGSEGV $!
+```
 
 <img src="./img/18.png">
 
