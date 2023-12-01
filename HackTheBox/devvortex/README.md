@@ -176,20 +176,21 @@ http://dev.devvortex.htb/tmp/
 [++] Readable config files are not found                                                        
                                                                                                 
                                                                                                 
-Your Report : reports/dev.devvortex.htb/```
+Your Report : reports/dev.devvortex.htb/
+```
 
 We get the version of the application and with this we can check if the application is vulnerable or if there is an exploit. The research found that version 4.2.6 is vulnerable due to the following information disclosure flaw and has CVE-2023-23752. The research found an exploit for the application.
 
 <img src="./img/6.png">
 
+
 ```python 
-https://github.com/Acceis/exploit-CVE-2023-23752```
+https://github.com/Acceis/exploit-CVE-2023-23752
+```
 
 Let's try it out.
 
-```python
-ruby exploit.rb http://dev.devvortex.htb 
-```
+
 <img src="./img/8.png">
 
 Nice. We have the database login credentials.  
