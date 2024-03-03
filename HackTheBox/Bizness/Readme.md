@@ -48,7 +48,7 @@ ________________________________________________
 control                 [Status: 200, Size: 34633, Words: 10468, Lines: 492, Duration: 2081ms]
 ```
 
-<img src="/img/Error.png>
+<img src="/img/Error.png">
 
 Well, we found an error page, but there could be more directories together. 
 
@@ -88,7 +88,7 @@ Wow, this is a bypass to get. Apache OFBiz Authentication Bypass Vulnerability (
 
 Now we'll bypass the portal and gain access to a shell.
 
-<img src="/img/netcat.png>
+<img src="/img/netcat.png">
 
 Wow, we get a shell!!!
 
@@ -100,7 +100,7 @@ Let us start with listing all files we have in current directory.
 
 After doing some exploration, I found an interesting file in /opt/ofbiz/framework/resources/templates/AdminUserLoginData.xml
 
-<img src="/img/privesc.png>
+<img src="/img/privesc.png">
 
 We managed to get a hash of a user!
 But we need to decrypt the hash to get the password used by a root user or a user with root privilege.
