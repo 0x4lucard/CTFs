@@ -88,7 +88,7 @@ Wow, this is a bypass to get. Apache OFBiz Authentication Bypass Vulnerability (
 
 Now we'll bypass the portal and gain access to a shell.
 
-<img src="./img/netcat.png>
+<img src="./img/netcat.png"> 
 
 Wow, we get a shell!!!
 
