@@ -6,7 +6,7 @@
 Default nmap Scan open Ports:
 
 ```python
-nmap -Pn -sC -sV -v 10.10.11.252 --min-rate 5000 > nmap.txt 
+nmap -Pn -sC -sV -v 10.10.11.252 -p- --min-rate 5000 > nmap.txt 
 ```
 
 <img src="./img/host.png">
