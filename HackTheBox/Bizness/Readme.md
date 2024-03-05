@@ -6,7 +6,7 @@
 Default nmap Scan open Ports:
 
 ```python
-nmap -Pn -sC -sV -vvv 10.10.11.252 --min-rate 5000 -p- > result.txt 
+nmap -Pn -sC -sV -v 10.10.11.252 --min-rate 5000 > nmap.txt 
 ```
 
 <img src="./img/host.png">
@@ -81,6 +81,8 @@ login                   [Status: 200, Size: 11061, Words: 1236, Lines: 186, Dura
 
 When you browse `/control/login` it redirects you to an Apache OFBiz (v18.12 release) login page.
 Well, we can search to see if the version is vulnerable.  
+
+<img src="./img/apache.png">
 
 <img src="./img/bypass.png">
 
